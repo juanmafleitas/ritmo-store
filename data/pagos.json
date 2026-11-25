@@ -1,0 +1,5 @@
+[
+  { "id": "credito", "nombre": "Tarjeta de crédito", "ajuste": 0 },
+  { "id": "debito", "nombre": "Tarjeta de débito", "ajuste": 0 },
+  { "id": "transferencia", "nombre": "Transferencia bancaria (5% off)", "ajuste": -5 }
+]

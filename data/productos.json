@@ -1,0 +1,15 @@
+[
+  {"id":1,"nombre":"Adidas Runfalcon","categoria":"Calzado","precio":85,"stock":10,"imagen":"assets/img/productos/producto-1.svg","descripcion":"Zapatilla liviana para running diario."},
+  {"id":2,"nombre":"Nike Air Zoom","categoria":"Calzado","precio":150,"stock":5,"imagen":"assets/img/productos/producto-2.svg","descripcion":"Amortiguación reactiva para entrenar fuerte."},
+  {"id":3,"nombre":"Asics Gel-Nimbus","categoria":"Calzado","precio":165,"stock":7,"imagen":"assets/img/productos/producto-3.svg","descripcion":"Máxima comodidad en distancias largas."},
+  {"id":4,"nombre":"New Balance 574","categoria":"Calzado","precio":110,"stock":12,"imagen":"assets/img/productos/producto-4.svg","descripcion":"Clásico urbano con suela robusta."},
+  {"id":5,"nombre":"Reebok Classic","categoria":"Calzado","precio":95,"stock":0,"imagen":"assets/img/productos/producto-5.svg","descripcion":"Estilo retro de cuero suave."},
+  {"id":6,"nombre":"Puma Tee Essential","categoria":"Indumentaria","precio":30,"stock":20,"imagen":"assets/img/productos/producto-6.svg","descripcion":"Remera de algodón con calce regular."},
+  {"id":7,"nombre":"Nike Dri-FIT Hoodie","categoria":"Indumentaria","precio":90,"stock":6,"imagen":"assets/img/productos/producto-7.svg","descripcion":"Buzo con capucha que absorbe la humedad."},
+  {"id":8,"nombre":"Adidas Training Shorts","categoria":"Indumentaria","precio":40,"stock":14,"imagen":"assets/img/productos/producto-8.svg","descripcion":"Short ligero con cintura elástica."},
+  {"id":9,"nombre":"Under Armour Thermal","categoria":"Indumentaria","precio":55,"stock":3,"imagen":"assets/img/productos/producto-9.svg","descripcion":"Camiseta térmica de ajuste ceñido."},
+  {"id":10,"nombre":"Gorra Reebok Run","categoria":"Accesorios","precio":25,"stock":18,"imagen":"assets/img/productos/producto-10.svg","descripcion":"Gorra ajustable con visera curva."},
+  {"id":11,"nombre":"Mochila Nike Brasilia","categoria":"Accesorios","precio":60,"stock":8,"imagen":"assets/img/productos/producto-11.svg","descripcion":"Mochila de 24 litros con bolsillo frontal."},
+  {"id":12,"nombre":"Botella Térmica 750 ml","categoria":"Accesorios","precio":22,"stock":25,"imagen":"assets/img/productos/producto-12.svg","descripcion":"Mantiene el frío hasta 12 horas."},
+  {"id":13,"nombre":"Pelota Puma Orbita","categoria":"Accesorios","precio":35,"stock":9,"imagen":"assets/img/productos/producto-13.svg","descripcion":"Pelota de fútbol N.º 5 para césped."}
+]

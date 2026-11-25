@@ -1,0 +1,4 @@
+[
+  { "codigo": "BIENVENIDO10", "descuento": 10, "minimo": 0, "detalle": "10% de descuento" },
+  { "codigo": "DEPORTE20", "descuento": 20, "minimo": 200, "detalle": "20% en compras desde USD 200" }
+]

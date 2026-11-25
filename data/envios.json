@@ -1,0 +1,5 @@
+[
+  { "id": "retiro", "nombre": "Retiro en tienda", "detalle": "Hoy mismo, sin costo", "costo": 0, "gratisDesde": null, "requiereDireccion": false },
+  { "id": "estandar", "nombre": "Envío estándar", "detalle": "3 a 5 días hábiles", "costo": 15, "gratisDesde": 300, "requiereDireccion": true },
+  { "id": "express", "nombre": "Envío express", "detalle": "24 a 48 horas", "costo": 30, "gratisDesde": null, "requiereDireccion": true }
+]

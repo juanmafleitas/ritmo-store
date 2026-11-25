@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ritmo Sport | Tienda deportiva</title>
+    <meta
+      name="description"
+      content="Simulador de compra online de artículos deportivos: catálogo, carrito, checkout y pedidos."
+    />
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"
+      defer
+    ></script>
+    <script src="js/api.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="cabecera">
+      <a
+        class="marca"
+        href="./"
+        data-nav="tienda"
+        aria-label="Ritmo Sport, ir al inicio"
+      >
+        <img src="assets/img/logo.svg" alt="" width="100" />
+      </a>
+      <nav class="navegacion" aria-label="Principal">
+        <button type="button" class="nav-boton" data-nav="tienda" aria-current>
+          Tienda
+        </button>
+        <button type="button" class="nav-boton" data-nav="pedidos">
+          Mis pedidos <span class="contador" id="contador-pedidos">0</span>
+        </button>
+      </nav>
+      <div class="selector-moneda" id="selector-moneda">
+        <button
+          type="button"
+          class="moneda-boton"
+          id="boton-moneda"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-controls="menu-moneda"
+        >
+          <img
+            src="assets/img/bandera-eeuu.svg"
+            alt=""
+            width="20"
+            height="14"
+          />
+          <span>USD</span>
+          <span class="moneda-flecha" aria-hidden="true">▾</span>
+        </button>
+        <ul
+          class="moneda-menu"
+          id="menu-moneda"
+          role="listbox"
+          aria-label="Moneda"
+          hidden
+        >
+          <li role="option" aria-selected="true" tabindex="-1">
+            <img
+              src="assets/img/bandera-eeuu.svg"
+              alt=""
+              width="20"
+              height="14"
+            />
+            <span>USD</span>
+            <span class="moneda-nombre">Dólares</span>
+          </li>
+        </ul>
+      </div>
+      <a class="carrito-acceso" href="#panel-carrito">
+        Carrito <span class="contador" id="contador-carrito">0</span>
+      </a>
+    </header>
+
+    <main class="layout">
+      <div class="contenido">
+        <section id="vista-tienda" aria-labelledby="titulo-tienda">
+          <div class="portada">
+            <h1 id="titulo-tienda">Equipate para tu próximo entrenamiento</h1>
+            <p>
+              Elegí tus productos, armá el carrito y confirmá la compra en
+              minutos.
+            </p>
+          </div>
+
+          <div class="barra-filtros">
+            <input
+              type="search"
+              id="input-buscar"
+              placeholder="Buscar por nombre…"
+              aria-label="Buscar productos por nombre"
+            />
+            <label class="orden">
+              Ordenar por
+              <select id="selector-orden">
+                <option value="destacados">Destacados</option>
+                <option value="menor">Menor precio</option>
+                <option value="mayor">Mayor precio</option>
+                <option value="nombre">Nombre (A–Z)</option>
+              </select>
+            </label>
+          </div>
+          <div
+            id="filtros-categoria"
+            class="chips"
+            role="group"
+            aria-label="Filtrar por categoría"
+          ></div>
+
+          <div id="catalogo" class="grilla" aria-live="polite"></div>
+        </section>
+
+        <section id="vista-checkout" hidden aria-labelledby="titulo-checkout">
+          <button type="button" class="enlace" data-nav="tienda">
+            ← Volver a la tienda
+          </button>
+          <h2 id="titulo-checkout">Finalizar compra</h2>
+
+          <div class="checkout">
+            <form id="form-checkout" novalidate>
+              <fieldset>
+                <legend>Tus datos</legend>
+                <label class="campo">
+                  Nombre y apellido
+                  <input type="text" name="nombre" autocomplete="name" />
+                  <small class="error" data-error-de="nombre"></small>
+                </label>
+                <label class="campo">
+                  Email
+                  <input type="email" name="email" autocomplete="email" />
+                  <small class="error" data-error-de="email"></small>
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Entrega</legend>
+                <div id="opciones-envio" class="opciones"></div>
+                <div id="campos-direccion" class="campos-doble">
+                  <label class="campo">
+                    Dirección
+                    <input
+                      type="text"
+                      name="direccion"
+                      autocomplete="street-address"
+                    />
+                    <small class="error" data-error-de="direccion"></small>
+                  </label>
+                  <label class="campo">
+                    Ciudad
+                    <input
+                      type="text"
+                      name="ciudad"
+                      autocomplete="address-level2"
+                    />
+                    <small class="error" data-error-de="ciudad"></small>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Pago</legend>
+                <label class="campo">
+                  Forma de pago
+                  <select name="pago" id="selector-pago"></select>
+                </label>
+                <p class="nota">
+                  Es un simulador: no ingreses datos reales de tarjeta.
+                </p>
+              </fieldset>
+            </form>
+
+            <aside class="resumen" aria-labelledby="titulo-resumen">
+              <h3 id="titulo-resumen">Resumen de tu compra</h3>
+              <div id="resumen-compra"></div>
+
+              <div class="cupon">
+                <label for="input-cupon">¿Tenés un cupón?</label>
+                <div class="cupon-fila">
+                  <input
+                    type="text"
+                    id="input-cupon"
+                    placeholder="Ej: BIENVENIDO10"
+                    autocomplete="off"
+                  />
+                  <button
+                    type="button"
+                    class="btn btn-secundario"
+                    id="btn-aplicar-cupon"
+                  >
+                    Aplicar
+                  </button>
+                </div>
+                <div id="estado-cupon" class="cupon-estado"></div>
+              </div>
+
+              <button
+                type="submit"
+                form="form-checkout"
+                class="btn btn-grande"
+                id="btn-confirmar"
+              >
+                Confirmar compra
+              </button>
+            </aside>
+          </div>
+        </section>
+
+        <section id="vista-pedidos" hidden aria-labelledby="titulo-pedidos">
+          <div class="encabezado-seccion">
+            <h2 id="titulo-pedidos">Mis pedidos</h2>
+            <button
+              type="button"
+              class="btn btn-secundario"
+              id="btn-vaciar-pedidos"
+            >
+              Borrar historial
+            </button>
+          </div>
+          <div id="lista-pedidos" class="pedidos"></div>
+        </section>
+      </div>
+
+      <aside
+        id="panel-carrito"
+        class="panel-carrito"
+        aria-labelledby="titulo-carrito"
+      >
+        <h2 id="titulo-carrito">Tu carrito</h2>
+        <div id="contenedor-carrito" aria-live="polite">
+          <p class="vacio">Tu carrito está vacío.</p>
+        </div>
+        <p class="subtotal">
+          Subtotal <strong id="total-carrito">$0.00</strong>
+        </p>
+        <button
+          type="button"
+          class="btn btn-grande"
+          id="btn-continuar"
+          data-nav="checkout"
+          disabled
+        >
+          Continuar compra
+        </button>
+        <button type="button" class="enlace" id="btn-vaciar" disabled>
+          Vaciar carrito
+        </button>
+      </aside>
+    </main>
+
+    <footer class="pie">
+      <p>2026 © Juan Fleitas · Entrega Final</p>
+      <button type="button" class="enlace" id="btn-reiniciar">
+        Restablecer tienda
+      </button>
+    </footer>
+  </body>
+</html>
